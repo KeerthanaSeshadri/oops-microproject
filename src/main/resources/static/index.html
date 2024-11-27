@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UG Admission | College Name</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2, h3 {
+            color: #007bff;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select, input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .fees-details {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .college-info, .admission-info {
+            margin-top: 30px;
+        }
+
+        .college-info ul, .admission-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .college-info li, .admission-info li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>UG Admission | College Name</h1>
+        <p>Welcome to the admission portal of our prestigious college!</p>
+    </header>
+
+    <div class="container">
+        <!-- Admission Form Section -->
+        <section>
+            <h2>Admission Form</h2>
+            <form id="admissionForm">
+                <label for="course">Select Course:</label>
+                <select id="course" name="course" onchange="updateFees()">
+                    <option value="BSc">B.Sc. in Computer Science</option>
+                    <option value="BA">BA in English Literature</option>
+                    <option value="BCom">B.Com</option>
+                    <option value="BBA">BBA</option>
+                    <option value="BTech">B.Tech in Computer Science</option>
+                </select>
+
+                <label for="fees">Course Fees:</label>
+                <input type="text" id="fees" name="fees" disabled>
+
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </section>
+
+        <!-- Fees Details Section -->
+        <section class="fees-details">
+            <h3>Fees Structure</h3>
+            <p>The fees vary depending on the course you choose. Please select your course to view the fees.</p>
+        </section>
+
+        <!-- College Information -->
+        <section class="college-info">
+            <h3>About the College</h3>
+            <ul>
+                <li><strong>College Name:</strong> XYZ University</li>
+                <li><strong>Location:</strong> 123 College Road, City, State, Country</li>
+                <li><strong>Contact:</strong> +1 234 567 890 | admissions@xyzuniversity.edu</li>
+                <li><strong>Established:</strong> 1990</li>
+            </ul>
+        </section>
+
+        <!-- Admission Information -->
+        <section class="admission-info">
+            <h3>Admission Information</h3>
+            <ul>
+                <li><strong>Application Deadline:</strong> June 30, 2024</li>
+                <li><strong>Eligibility Criteria:</strong> Must have passed 12th grade with a minimum of 50% in relevant subjects.</li>
+                <li><strong>Documents Required:</strong> 12th Grade Certificate, Birth Certificate, Passport-sized Photo</li>
+            </ul>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="contact-form">
+            <h3>Contact Us</h3>
+            <form>
+                <label for="contactName">Your Name:</label>
+                <input type="text" id="contactName" name="contactName" required>
+
+                <label for="contactEmail">Your Email:</label>
+                <input type="email" id="contactEmail" name="contactEmail" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 XYZ University | All rights reserved</p>
+    </footer>
+
+    <script>
+        // Function to update fees based on selected course
+        function updateFees() {
+            const course = document.getElementById('course').value;
+            const feesField = document.getElementById('fees');
+            let fees = "";
+
+            switch (course) {
+                case "BSc":
+                    fees = "$5000 per year";
+                    break;
+                case "BA":
+                    fees = "$4000 per year";
+                    break;
+                case "BCom":
+                    fees = "$4500 per year";
+                    break;
+                case "BBA":
+                    fees = "$5500 per year";
+                    break;
+                case "BTech":
+                    fees = "$7000 per year";
+                    break;
+                default:
+                    fees = "Select a course to see fees";
+                    break;
+            }
+
+            feesField.value = fees;
+        }
+
+        document.getElementById('admissionForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const course = document.getElementById('course').value;
+    const fees = document.getElementById('fees').value;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    const admissionData = {
+        course: course,
+        fees: fees,
+        name: name,
+        email: email
+    };
+
+    fetch('http://localhost:8080/api/admissions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(admissionData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Application submitted successfully!');
+        console.log(data);
+    })
+    .catch(error => {
+        alert('Error submitting application!');
+        console.error(error);
+    });
+});
+
+    </script>
+
+</body>
+
+</html>
